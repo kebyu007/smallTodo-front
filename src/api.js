@@ -1,8 +1,7 @@
-import { config } from "dotenv";
+// 1. REMOVE the dotenv imports and config call completely
 
-config({ quiet: true });
-
-const BASE_URL = process.env.BASE_URL || "http://localhost:5000/api/todos";
+// 2. Use Vite's native environment handler with the "VITE_" prefix
+const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:5000/api/todos";
 
 export const getTodos = () =>
   fetch(BASE_URL, { credentials: "include" }).then((r) => r.json());

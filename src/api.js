@@ -1,4 +1,8 @@
-const BASE_URL = "http://localhost:5000/api/todos";
+import { config } from "dotenv";
+
+config({ quiet: true });
+
+const BASE_URL = process.env.BASE_URL || "http://localhost:5000/api/todos";
 
 export const getTodos = () =>
   fetch(BASE_URL, { credentials: "include" }).then((r) => r.json());
